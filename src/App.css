@@ -58,6 +58,29 @@
 
 .welcome_area .hero-content h2 {
   font-size: 60px;
-  color: #e0e0e0;
+  color: #ffffff;
   margin-bottom: 50px;
+  text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  margin-top: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+  .welcome_area .hero-content h2 {
+    font-size: 30px !important;
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
