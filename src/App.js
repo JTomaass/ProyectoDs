@@ -5,17 +5,20 @@ import Contacto from './components/Contacto';
 import Home from './components/Home';
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Internacional from './components/Internacional';
+import CamInternacional from './components/CamInternacional';
+import CamPaises from './components/CamPaises';
+import Nosotros from './components/Nosotros';
 
 class App extends React.Component {
   state = {
     productos: [
-      { id: 1, name: 'Camiseta PSG Mbappe', team: 'PSG', price: 24990, img2: 'img/camisetas/psg.jpeg', img1: 'img/camisetas/mbappe.png' },
-      { id: 2, name: 'Camiseta Real Madrid Benzema', team: 'Real Madrid', price: 24990, img2: 'img/camisetas/real madrid.jpeg', img1: 'img/camisetas/benzema.png'  },
-      { id: 3, name: 'Camiseta Manchester City Foden', team: 'Manchester City', price: 24990, img2: 'img/camisetas/manchester city.jpeg', img1: 'img/camisetas/foden.png'  },
-      { id: 4, name: 'Camiseta FC Barcelona Lewandowski', team: 'FC Barcelona', price: 24990, img2: 'img/camisetas/barcelona 22_23.jpeg', img1: 'img/camisetas/lewandowski.png'  },
-      { id: 5, name: 'Camiseta Chelsea Aubameyang', team: 'Chelsea', price: 24990, img2: 'img/camisetas/chelsea 22_23.jpeg', img1: 'img/camisetas/aubameyang.png'  },
+      { name: 'Camiseta PSG Mbappe', team: 'PSG', price: 24990, img2: 'img/camisetas/psg.jpeg', img1: 'img/camisetas/mbappe.png' },
+      { name: 'Camiseta Real Madrid Benzema', team: 'Real Madrid', price: 24990, img2: 'img/camisetas/real madrid.jpeg', img1: 'img/camisetas/benzema.png'  },
+      { name: 'Camiseta Manchester City Foden', team: 'Manchester City', price: 24990, img2: 'img/camisetas/manchester city.jpeg', img1: 'img/camisetas/foden.png'  },
+      { name: 'Camiseta FC Barcelona Lewandowski', team: 'FC Barcelona', price: 24990, img2: 'img/camisetas/barcelona 22_23.jpeg', img1: 'img/camisetas/lewandowski.png'  },
+      { name: 'Camiseta Chelsea Aubameyang', team: 'Chelsea', price: 24990, img2: 'img/camisetas/chelsea 22_23.jpeg', img1: 'img/camisetas/aubameyang.png'  },
     ],
+
     carro: [],
   }
 
@@ -37,8 +40,8 @@ class App extends React.Component {
 
   agregarAlCarro = (producto) => {
     const { carro } = this.state
-    if (carro.find(x => x.id === producto.id)) {
-      const newCarro = carro.map(x => x.id === producto.id
+    if (carro.find(x => x.name === producto.name)) {
+      const newCarro = carro.map(x => x.name === producto.name
         ? ({
           ...x,
           cantidad: x.cantidad + 1
@@ -53,15 +56,14 @@ class App extends React.Component {
       carro: arr 
     })
     this.guardarCarro(arr)
-    console.log("58", this.state.carro)
     return;
   }
 
-  removeProduct = (id) => {
+  removeProduct = (name) => {
     const { carro } = this.state
-    const index = carro.findIndex((c) => c.id == id)
+    const index = carro.findIndex((c) => c.name == name)
     if (index !== -1) {
-      const aux = carro.splice(index, 1)
+      carro.splice(index, 1)
       this.setState({carro})
       localStorage.setItem('carro', JSON.stringify(carro));
     }
@@ -69,7 +71,7 @@ class App extends React.Component {
   
   render() {
     return (
-      <div id="app">
+      <div name="app">
         <Router>
           <Header 
             carro={this.state.carro}
@@ -82,9 +84,12 @@ class App extends React.Component {
                 productos={this.state.productos}
               />} />
             <Route path="/contacto" element={<Contacto />} />
-            <Route path="/camisetas-internacionales" element={<Internacional 
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/camisetas-internacionales" element={<CamInternacional 
                 agregarAlCarro={this.agregarAlCarro}
-                productos={this.state.productos}
+              />} />
+            <Route path="/camisetas-paises" element={<CamPaises 
+                agregarAlCarro={this.agregarAlCarro}
               />} />
           </Routes>
 

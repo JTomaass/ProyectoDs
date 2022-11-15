@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Carro from './Carro'
 import CarroNav from './CarroNav'
 import '../App.css'
@@ -33,13 +33,13 @@ export default class Header extends Component {
                         <li class="title">Camisetas</li>
                         <li><a href="#">Equipos nacionales</a></li>
                         <li><Link to="/camisetas-internacionales">Equipos internacionales</Link></li>
-                        <li><a href="#">Paises</a></li>
+                        <li><Link to="/camisetas-paises">Países</Link></li>
                       </ul>
                       <ul class="single-mega cn-col-4">
                         <li class="title">Shorts</li>
                         <li><a href="#">Equipos nacionales</a></li>
                         <li><a href="#">Equipos internacionales</a></li>
-                        <li><a href="#">Paises</a></li>
+                        <li><a href="#">Países</a></li>
                       </ul>
                       <ul class="single-mega cn-col-4">
                         <li class="title">Personalizados</li>
@@ -54,13 +54,11 @@ export default class Header extends Component {
                   <li><a href="#">Paginas</a>
                     <ul class="dropdown">
                       <li><Link to="/">Inicio</Link></li>
-                      <li><a href="#">Detalles de productos</a></li>
                       <li><a href="#">Pago</a></li>
-                      <li><a href="#">¿Quienes somos?</a></li>
+                      <li><Link to="/nosotros">¿Quienes somos?</Link></li>
                     </ul>
                   </li>
                   <li><a href="https://www.instagram.com/asfutbol14/">Instagram</a></li>
-                  {/* <li><a href="/contacto">Contacto</a></li> */}
                   <li><Link to="/contacto">Contacto</Link></li>
                 </ul>
               </div>

@@ -84,3 +84,8 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.parrafo_nosotros {
+  font-size: large;
+  text-align: justify;
+}

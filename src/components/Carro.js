@@ -24,7 +24,7 @@ export default class Carro extends Component {
             
           <div class="cart-list">
             {carro.map(x => 
-              <div onClick={() => removeProduct(x.id)} class="single-cart-item" key={x.id}>
+              <div onClick={() => removeProduct(x.name)} class="single-cart-item" key={x.name}>
                 <a href="#" class="product-image">
                   <img src={x.img2} class="cart-thumb" alt="" />
 
